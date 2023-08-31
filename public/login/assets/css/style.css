@@ -1,0 +1,41 @@
+body {
+    margin: 0%;
+    padding: 0%;
+}
+
+.background {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(/login/assets/images/street-night.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+a {
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  .btn {
+    background-color: #6047f0;
+  }
+
+  .btn:hover {
+    background-color: #4752C4;
+  }
+
+  /* // Small devices (landscape phones, less than 768px) */
+@media (max-width: 767.98px) {
+    .background {
+        min-height: fit-content;
+    }
+    .colon {
+        min-height: 100vh;
+        background-color: #313338;
+    }
+ }
