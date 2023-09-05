@@ -61,7 +61,9 @@
                                             <span class="text-danger error-message">{{ $message }}</span>
                                         @enderror
                                     </label>
-                                    <textarea class="form-control" wire:model="feature_description" rows="3"></textarea>
+                                    <div wire:ignore>
+                                        <textarea class="form-control" id="ck_feature" wire:model.defer="feature_description"></textarea>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -82,6 +84,50 @@
                 title: event.detail.message,
                 icon: event.detail.type,
             });
+        });
+
+        let settings = {
+            toolbar: ['heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList',
+                'blockQuote'
+            ],
+            heading: {
+                options: [{
+                        model: 'paragraph',
+                        title: 'Paragraph',
+                        class: 'ck-heading_paragraph'
+                    },
+                    {
+                        model: 'heading1',
+                        view: 'h1',
+                        title: 'Heading 1',
+                        class: 'ck-heading_heading1'
+                    },
+                    {
+                        model: 'heading2',
+                        view: 'h2',
+                        title: 'Heading 2',
+                        class: 'ck-heading_heading2'
+                    }
+                ]
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+
+            ClassicEditor
+                .create(document.querySelector('#ck_feature'), settings)
+                .then(useeditor => {
+                    let ckeditor;
+                    ckeditor = useeditor;
+                    ckeditor.model.document.on('change:data', () => {
+                        console.log(ckeditor.getData())
+                        @this.set('feature_description', ckeditor.getData());
+                    })
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+
         });
     </script>
 @endsection

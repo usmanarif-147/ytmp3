@@ -11,8 +11,10 @@ class EditHelp extends Component
     public $pageId, $heading;
 
     public
-        $how_to_download_content,
-        $why_use_content;
+        $left_title,
+        $right_title,
+        $description_left,
+        $description_right;
 
 
     public function mount($pageId)
@@ -20,15 +22,19 @@ class EditHelp extends Component
         $this->pageId = $pageId;
 
         $pageHelp = PageHelp::where('page_id', $pageId)->first();
-        $this->how_to_download_content = $pageHelp->how_to_download_content;
-        $this->why_use_content = $pageHelp->why_use_content;
+        $this->left_title = $pageHelp->left_title;
+        $this->right_title = $pageHelp->right_title;
+        $this->description_left = $pageHelp->description_left;
+        $this->description_right = $pageHelp->description_right;
     }
 
     protected function rules()
     {
         return [
-            'how_to_download_content'        =>        ['required'],
-            'why_use_content'                =>        ['required'],
+            'left_title'                     =>        ['required'],
+            'right_title'                    =>        ['required'],
+            'description_left'               =>        ['required'],
+            'description_right'              =>        ['required'],
         ];
     }
 

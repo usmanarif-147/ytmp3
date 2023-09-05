@@ -20,7 +20,10 @@ class CreatePage extends Component
 
     public function mount()
     {
-        $this->languages = Language::where('is_content_uploaded', 0)->pluck('name', 'id')->toArray();
+        $this->languages = Language::where('is_content_uploaded', 0)
+            ->where('status', 1)
+            ->pluck('name', 'id')
+            ->toArray();
     }
 
     protected function rules()

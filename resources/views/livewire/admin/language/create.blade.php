@@ -25,7 +25,6 @@
                                         <div wire:loading wire:target="flag" wire:key="flag">
                                             <i class="fa fa-spinner fa-spin mt-2 ml-2"></i>
                                         </div>
-
                                         <div class="icon-upload btn btn-primary">
                                             <span>Upload Flag Icon</span>
                                             <input type="file" class="icon-input" wire:model="flag"

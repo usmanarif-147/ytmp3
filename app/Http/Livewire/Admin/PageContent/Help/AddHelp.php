@@ -12,8 +12,10 @@ class AddHelp extends Component
     public $pageId, $langId, $heading;
 
     public
-        $how_to_download_content,
-        $why_use_content;
+        $left_title,
+        $right_title,
+        $description_left,
+        $description_right;
 
 
     public function mount($pageId)
@@ -25,8 +27,10 @@ class AddHelp extends Component
     protected function rules()
     {
         return [
-            'how_to_download_content'        =>        ['required'],
-            'why_use_content'                =>        ['required'],
+            'left_title'                     =>        ['required'],
+            'right_title'                    =>        ['required'],
+            'description_left'               =>        ['required'],
+            'description_right'              =>        ['required'],
         ];
     }
 

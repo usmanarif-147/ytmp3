@@ -77,10 +77,6 @@
             });
         });
 
-        // $('.swal-button').click(function() {
-        //     alert("working");
-        // });
-
         $(document).on('click', '.swal-button', function() {
             location.href = "{{ route('pages') }}";
         });

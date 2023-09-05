@@ -12,7 +12,9 @@ class PageHelp extends Model
     protected $fillable = [
         'lang_id',
         'page_id',
-        'how_to_download_content',
-        'why_use_content'
+        'left_title',
+        'right_title',
+        'description_left',
+        'description_right',
     ];
 }

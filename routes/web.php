@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Livewire\Home\HomePage;
+use App\Models\PageHelp;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,7 +15,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/{slug?}', HomePage::class)->name('home.page')->middleware('handle.page.request');
+Route::get('/storage/link', function () {
+    $targetFolder = storage_path('app/public');
+    $linkFolder = $_SERVER['DOCUMENT_ROOT'] . '/storage';
+    symlink($targetFolder, $linkFolder);
+});
+
+Route::get('/terms-of-use', function () {
+    return view('terms-of-user');
+})->name('terms-of-use');
+
+
+Route::get('/test/help', function () {
+    $pageHelp = PageHelp::first()->toArray();
+    // dd($pageHelp);
+    return view('welcome', compact('pageHelp'));
+});
+
+Route::get('/{slug?}', HomePage::class)
+    ->name('home.page')
+    ->middleware('handle.page.request');
 
 Route::fallback(function () {
     if (request()->segment(1) == 'admin/login') {
@@ -23,9 +43,6 @@ Route::fallback(function () {
     return abort(404);
 });
 
-// Route::get('/', function () {
-//     return view('home.home');
-// });
 
 
 require __DIR__ . '/auth.php';

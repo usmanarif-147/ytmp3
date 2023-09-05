@@ -2,26 +2,24 @@
     <div class="container" data-v-8fbc4ecc>
         <div class="section-helps-box" data-v-8fbc4ecc>
             <div class="section-helps-title" data-v-8fbc4ecc>
-                How to Download YouTube videos?
+                {{ $page_content['left_title'] }}
             </div>
             <div class="section-helps-list" data-v-8fbc4ecc>
                 <div class="section-helps-cell" data-v-8fbc4ecc>
-                    <span class="helps-index" data-v-8fbc4ecc>1、</span>
                     <span class="helps-detail" data-v-8fbc4ecc>
-                        {{ $page_content['how_to_download_content'] }}
+                        {!! $page_content['description_left'] !!}
                     </span>
                 </div>
             </div>
         </div>
         <div class="section-helps-box" data-v-8fbc4ecc>
             <div class="section-helps-title" data-v-8fbc4ecc>
-                Why use our Online YouTube Downloader?
+                {{ $page_content['right_title'] }}
             </div>
             <div class="section-helps-list" data-v-8fbc4ecc>
                 <div class="section-helps-cell" data-v-8fbc4ecc>
-                    <span class="helps-index" data-v-8fbc4ecc>1、</span>
                     <span class="helps-detail" data-v-8fbc4ecc>
-                        {{ $page_content['why_use_content'] }}
+                        {!! $page_content['description_right'] !!}
                     </span>
                 </div>
             </div>

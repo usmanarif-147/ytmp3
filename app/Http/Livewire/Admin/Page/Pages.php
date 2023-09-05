@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Admin\Page;
 
 use App\Models\Language;
 use App\Models\Page;
+use App\Models\PageStaticMeta;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -17,6 +18,8 @@ class Pages extends Component
 
     public $page_id, $methodType, $modalTitle, $modalBody, $modalActionBtnColor, $modalActionBtnText, $status;
 
+    public $page_static_meta;
+
     public $searchQuery = '', $filterByStatus = '';
 
     public $pages, $total, $heading, $statuses = [], $languages = [];
@@ -27,6 +30,8 @@ class Pages extends Component
     public function mount()
     {
         $this->languages = Language::all()->pluck('name', 'id')->toArray();
+
+        $this->page_static_meta = PageStaticMeta::first();
 
         $this->statuses = [
             '1' => 'Active',
@@ -137,13 +142,13 @@ class Pages extends Component
             'pages.page_title',
             'pages.slug',
             'pages.status',
-            'page_metas.id as meta',
+            'page_dynamic_metas.id as dynamic_meta',
             'page_helps.id as help',
             'page_features.id as feature',
             DB::raw('(SELECT COUNT(*) FROM page_faqs WHERE page_faqs.page_id = pages.id) AS faqs')
         )
             ->join('languages', 'languages.id', 'pages.lang_id')
-            ->leftJoin('page_metas', 'page_metas.page_id', 'pages.id')
+            ->leftJoin('page_dynamic_metas', 'page_dynamic_metas.page_id', 'pages.id')
             ->leftJoin('page_helps', 'page_helps.page_id', 'pages.id')
             ->leftJoin('page_features', 'page_features.page_id', 'pages.id')
             ->when($this->filterByStatus, function ($query) {

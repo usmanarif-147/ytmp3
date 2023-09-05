@@ -38,7 +38,6 @@ class Edit extends Component
 
     public function mount($id)
     {
-
         $this->lang_id = $id;
         $language = Language::where('id', $id)->first();
 

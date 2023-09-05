@@ -7,14 +7,16 @@ use App\Http\Livewire\Admin\Language\Languages;
 use App\Http\Livewire\Admin\Page\CreatePage;
 use App\Http\Livewire\Admin\Page\EditPage;
 use App\Http\Livewire\Admin\Page\Pages;
+use App\Http\Livewire\Admin\PageContent\DynamicMeta\AddDynamicMeta;
+use App\Http\Livewire\Admin\PageContent\DynamicMeta\EditDynamicMeta;
 use App\Http\Livewire\Admin\PageContent\Faq\AddFaq;
 use App\Http\Livewire\Admin\PageContent\Faq\EditFaq;
 use App\Http\Livewire\Admin\PageContent\Feature\AddFeature;
 use App\Http\Livewire\Admin\PageContent\Feature\EditFeature;
 use App\Http\Livewire\Admin\PageContent\Help\AddHelp;
 use App\Http\Livewire\Admin\PageContent\Help\EditHelp;
-use App\Http\Livewire\Admin\PageContent\Meta\AddMeta;
-use App\Http\Livewire\Admin\PageContent\Meta\EditMeta;
+use App\Http\Livewire\Admin\PageContent\StaticMeta\AddStaticMeta;
+use App\Http\Livewire\Admin\PageContent\StaticMeta\EditStaticMeta;
 use Illuminate\Support\Facades\Route;
 
 
@@ -34,10 +36,16 @@ Route::middleware('auth:admin')->group(function () {
     Route::get('edit-page/{id}', EditPage::class)->name('edit.page');
 
     /**
-     * Page Meta Details Routes
+     * Page Static Meta Details Routes
      */
-    Route::get('add/meta-details/{pageId}', AddMeta::class)->name('add.page.meta');
-    Route::get('edit/meta-details/{pageId}', EditMeta::class)->name('edit.page.meta');
+    Route::get('add/page/static-meta-details', AddStaticMeta::class)->name('add.static.page.meta');
+    Route::get('edit/page/static-meta-details', EditStaticMeta::class)->name('edit.static.page.meta');
+
+    /**
+     * Page Dynamic Meta Details Routes
+     */
+    Route::get('add/dynamic-meta-details/{pageId}', AddDynamicMeta::class)->name('add.dynamic.page.meta');
+    Route::get('edit/dynamic-meta-details/{pageId}', EditDynamicMeta::class)->name('edit.dynamic.page.meta');
 
     /**
      * Page Help Routes

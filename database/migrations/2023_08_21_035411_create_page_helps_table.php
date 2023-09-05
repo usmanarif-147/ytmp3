@@ -17,8 +17,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId('lang_id')->constrained('languages');
             $table->foreignId('page_id')->constrained('pages');
-            $table->mediumText('how_to_download_content');
-            $table->mediumText('why_use_content');
+            $table->string('left_title');
+            $table->string('right_title');
+            $table->longText('description_left');
+            $table->longText('description_right');
             $table->timestamps();
         });
     }

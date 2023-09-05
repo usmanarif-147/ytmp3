@@ -8,7 +8,19 @@
                 </span>
             </h2>
             <h5 class="card-header">
-                <a class="btn btn-primary" href="{{ route('create.page') }}"> Create
+                @if ($page_static_meta)
+                    <a class="btn btn-primary" href="{{ route('edit.static.page.meta') }}">
+                        {{-- <a class="btn btn-primary" href="{{ route('add.static.page.meta') }}"> --}}
+                        <i class='bx bx-pencil'></i>
+                        Edit Static Meta Details
+                    </a>
+                @else
+                    <a class="btn btn-primary" href="{{ route('add.static.page.meta') }}">
+                        <i class='bx bx-plus'></i>
+                        Add Static Meta Details
+                    </a>
+                @endif
+                <a class="btn btn-primary" href="{{ route('create.page') }}"> Create Page
                 </a>
             </h5>
         </div>
@@ -73,14 +85,14 @@
                                                         </a>
                                                     </li>
                                                     <li>
-                                                        <a class="dropdown-item fw-bold {{ $page->meta ? 'text-warning' : 'text-success' }}"
-                                                            href="{{ $page->meta ? route('edit.page.meta', $page->id) : route('add.page.meta', $page->id) }}">
-                                                            @if ($page->meta)
+                                                        <a class="dropdown-item fw-bold {{ $page->dynamic_meta ? 'text-warning' : 'text-success' }}"
+                                                            href="{{ $page->dynamic_meta ? route('edit.dynamic.page.meta', $page->id) : route('add.dynamic.page.meta', $page->id) }}">
+                                                            @if ($page->dynamic_meta)
                                                                 <i class="bx bx-pencil"></i>
                                                             @else
                                                                 <i class='bx bx-plus'></i>
                                                             @endif
-                                                            {{ $page->meta ? 'Edit Meta Details' : 'Add Meta Details' }}
+                                                            {{ $page->dynamic_meta ? 'Edit Dynamic Meta Details' : 'Add Dynamic Meta Details' }}
                                                         </a>
                                                     </li>
                                                     <li>
@@ -107,7 +119,7 @@
                                                     </li>
                                                     <li>
                                                         <a class="dropdown-item fw-bold {{ $page->faqs ? 'text-warning' : 'text-success' }}"
-                                                            href="{{ $page->faqs ? '#' : route('add.page.faqs', $page->id) }}">
+                                                            href="{{ $page->faqs ? route('edit.page.faqs', $page->id) : route('add.page.faqs', $page->id) }}">
                                                             @if ($page->faqs)
                                                                 <i class="bx bx-pencil"></i>
                                                             @else

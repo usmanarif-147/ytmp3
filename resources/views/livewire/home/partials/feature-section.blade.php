@@ -8,7 +8,7 @@
                 class="img-fluid" alt="">
         </div>
         <div class="section-features-desc" data-v-8fbc4ecc>
-            {{ $page_content['feature_description'] }}
+            {!! $page_content['feature_description'] !!}
         </div>
     </div>
 </div>

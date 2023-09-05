@@ -23,17 +23,19 @@ class EditFeature extends Component
     {
         $this->pageId = $pageId;
 
-        $pageHelp = PageFeature::where('page_id', $pageId)->first();
-        $this->feature_title = $pageHelp->feature_title;
-        $this->feature_image_preview = $pageHelp->feature_image;
-        $this->feature_description = $pageHelp->feature_description;
+        $pageFeature = PageFeature::where('page_id', $pageId)->first();
+        $this->feature_title = $pageFeature->feature_title;
+        $this->feature_image_preview = $pageFeature->feature_image;
+        $this->feature_description = $pageFeature->feature_description;
+
+        // dd($pageFeature->toArray());
     }
 
     protected function rules()
     {
         return [
             'feature_title'             =>        ['required'],
-            'feature_image'             =>        ['required', 'mimes:jpeg,jpg,png', 'max:2048'],
+            'feature_image'             =>        ['nullable', 'mimes:jpeg,jpg,png', 'max:2048'],
             'feature_description'       =>        ['required'],
         ];
     }
@@ -46,6 +48,7 @@ class EditFeature extends Component
     public function update()
     {
         $data = $this->validate();
+
 
         if (!$data['feature_image']) {
             $data['feature_image'] = $this->feature_image_preview;

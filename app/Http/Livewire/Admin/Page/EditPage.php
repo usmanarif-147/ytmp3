@@ -4,11 +4,12 @@ namespace App\Http\Livewire\Admin\Page;
 
 use App\Models\Language;
 use App\Models\Page;
+use App\Models\PageOldSlug;
 use Livewire\Component;
 
 class EditPage extends Component
 {
-    public $heading, $page_id, $prev_lang_id, $languages = [];
+    public $heading, $page_id, $prev_lang_id, $languages = [], $temp_slug;
 
     public
         $lang_id,
@@ -28,6 +29,7 @@ class EditPage extends Component
         $this->prev_lang_id = $page->lang_id;
         $this->page_title = $page->page_title;
         $this->slug = $page->slug;
+        $this->temp_slug = $page->slug;
         $this->status = $page->status ? $page->status : 2;
     }
 
@@ -53,6 +55,15 @@ class EditPage extends Component
 
         if ($data['status'] == 2) {
             $data['status'] = 0;
+        }
+
+        if ($this->temp_slug != $this->slug) {
+
+            // dd($this->temp_slug, $this->slug);
+            PageOldSlug::create([
+                'page_id' => $this->page_id,
+                'old_slug' => $this->temp_slug
+            ]);
         }
 
         if ($this->lang_id != $this->prev_lang_id) {

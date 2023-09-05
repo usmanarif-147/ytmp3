@@ -25,7 +25,7 @@
         {{-- Faq Section End --}}
 
         {{-- Post Section Start --}}
-        @include('livewire.home.partials.post-section')
+        {{-- @include('livewire.home.partials.post-section') --}}
         {{-- Post Section End --}}
     </div>
 

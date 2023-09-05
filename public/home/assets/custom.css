@@ -450,9 +450,9 @@
             outline: 0
         }
 
-        li {
+        /* li {
             list-style-type: none
-        }
+        } */
 
         dd {
             margin: 0
@@ -757,7 +757,7 @@
             max-height: 200px;
             overflow-y: scroll;
         }
-/* 
+/*
         .dropdown {
             opacity: 0;
             transition: all 0.4s ease-in-out;
@@ -782,7 +782,7 @@
             color: #000;
             text-decoration: none;
           }
-          
+
           .dropdown li {
             list-style-type: none;
             padding: 0px 10px;
@@ -793,16 +793,16 @@
             padding: 0px 10px;
             border-radius: 7px;
           }
-          
+
           .dropdown li a {
             transition: all 0.3s;
           }
-          
+
           .dropdown-links:hover .dropdown {
             opacity: 1;
             visibility: visible;
           }
-          
+
           .dropdown li a:hover {
             color: #ff2020;
           } */
