@@ -2,7 +2,9 @@
     <div class="container" data-v-8fbc4ecc>
         <div class="section-helps-box" data-v-8fbc4ecc>
             <div class="section-helps-title" data-v-8fbc4ecc>
-                {{ $page_content['left_title'] }}
+                <h2 class=" ">
+                    <strong>{{ $page_content['left_title'] }}</strong>
+                </h2>
             </div>
             <div class="section-helps-list" data-v-8fbc4ecc>
                 <div class="section-helps-cell" data-v-8fbc4ecc>
@@ -14,7 +16,9 @@
         </div>
         <div class="section-helps-box" data-v-8fbc4ecc>
             <div class="section-helps-title" data-v-8fbc4ecc>
-                {{ $page_content['right_title'] }}
+                <h2 class=" ">
+                    <strong>{{ $page_content['right_title'] }}</strong>
+                </h2>
             </div>
             <div class="section-helps-list" data-v-8fbc4ecc>
                 <div class="section-helps-cell" data-v-8fbc4ecc>

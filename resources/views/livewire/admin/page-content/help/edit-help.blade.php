@@ -2,7 +2,7 @@
     <div>
         <div class="d-flex justify-content-between">
             <h2 class="card-header">
-                <a href="{{ url('admin/pages') }}"> Pages </a> / {{ $heading }}
+                <a href="{{ route('pages') }}"> Pages </a> / {{ $heading }}
             </h2>
         </div>
     </div>
@@ -73,7 +73,7 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">Save</button>
+                        <button type="submit" class="btn btn-primary">Update</button>
                     </div>
                 </form>
             </div>
@@ -87,34 +87,13 @@
             swal({
                 title: event.detail.message,
                 icon: event.detail.type,
+                allowOutsideClick: false,
+            }).then(() => {
+                location.href = "{{ route('pages') }}";
             });
         });
 
-        let settings = {
-            toolbar: ['heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList',
-                'blockQuote'
-            ],
-            heading: {
-                options: [{
-                        model: 'paragraph',
-                        title: 'Paragraph',
-                        class: 'ck-heading_paragraph'
-                    },
-                    {
-                        model: 'heading1',
-                        view: 'h1',
-                        title: 'Heading 1',
-                        class: 'ck-heading_heading1'
-                    },
-                    {
-                        model: 'heading2',
-                        view: 'h2',
-                        title: 'Heading 2',
-                        class: 'ck-heading_heading2'
-                    }
-                ]
-            }
-        }
+        let settings = ck_settings();
 
         document.addEventListener("DOMContentLoaded", function() {
 

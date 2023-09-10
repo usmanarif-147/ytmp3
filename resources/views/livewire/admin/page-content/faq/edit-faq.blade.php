@@ -2,7 +2,7 @@
     <div>
         <div class="d-flex justify-content-between">
             <h2 class="card-header">
-                <a href="{{ url('admin/pages') }}"> Pages </a> / {{ $heading }}
+                <a href="{{ route('pages') }}"> Pages </a> / {{ $heading }}
             </h2>
         </div>
     </div>
@@ -59,7 +59,7 @@
                     <div class="card-footer">
                         <button type="button" class="btn btn-success" wire:click="addNewFaq">Add</button>
                         @if (count($questions))
-                            <button type="submit" class="btn btn-primary">Save</button>
+                            <button type="submit" class="btn btn-primary">Update</button>
                         @endif
                     </div>
                 </form>
@@ -74,11 +74,14 @@
             swal({
                 title: event.detail.message,
                 icon: event.detail.type,
+                allowOutsideClick: false,
+            }).then(() => {
+                location.href = "{{ route('pages') }}";
             });
         });
 
-        $(document).on('click', '.swal-button', function() {
-            location.href = "{{ route('pages') }}";
-        });
+        // $(document).on('click', '.swal-button', function() {
+        //     location.href = "{{ route('pages') }}";
+        // });
     </script>
 @endsection

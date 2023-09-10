@@ -8,15 +8,24 @@ use Livewire\Component;
 
 class AddDynamicMeta extends Component
 {
-
     public $pageId, $langId, $heading;
 
     public
         $lang_id,
         $page_id,
+        $meta_title,
         $meta_description,
+        $item_prop_name,
+        $item_prop_image,
         $item_prop_description,
-        $og_description;
+        $og_type,
+        $og_title,
+        $og_image,
+        $og_description,
+        $og_locale,
+        $og_url,
+        $canonical,
+        $robots;
 
 
     public function mount($pageId)
@@ -28,9 +37,19 @@ class AddDynamicMeta extends Component
     protected function rules()
     {
         return [
+            'meta_title'                   =>      ['required'],
             'meta_description'             =>      ['required'],
+            'item_prop_name'               =>      ['required'],
+            'item_prop_image'              =>      ['required'],
             'item_prop_description'        =>      ['required'],
+            'og_type'                      =>      ['required'],
+            'og_title'                     =>      ['required'],
+            'og_image'                     =>      ['required'],
             'og_description'               =>      ['required'],
+            'og_locale'                    =>      ['required'],
+            'og_url'                       =>      ['required'],
+            'canonical'                    =>      ['required'],
+            'robots'                       =>      ['required'],
         ];
     }
 
@@ -57,7 +76,7 @@ class AddDynamicMeta extends Component
 
     public function render()
     {
-        $this->heading = 'Add Meta';
+        $this->heading = 'Add Dynamic Meta';
         return view('livewire.admin.page-content.dynamic-meta.add-dynamic-meta')
             ->layout('layouts.app');
     }

@@ -2,7 +2,7 @@
     <div>
         <div class="d-flex justify-content-between">
             <h2 class="card-header">
-                <a href="{{ url('admin/pages') }}"> Pages </a> / {{ $heading }}
+                <a href="{{ route('pages') }}"> Pages </a> / {{ $heading }}
             </h2>
         </div>
     </div>
@@ -90,6 +90,9 @@
             swal({
                 title: event.detail.message,
                 icon: event.detail.type,
+                allowOutsideClick: false,
+            }).then(() => {
+                location.href = "{{ route('pages') }}";
             });
         });
     </script>

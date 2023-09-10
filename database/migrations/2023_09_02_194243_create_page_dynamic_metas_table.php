@@ -17,9 +17,24 @@ return new class extends Migration
             $table->id();
             $table->foreignId('lang_id')->constrained('languages');
             $table->foreignId('page_id')->constrained('pages');
+
+            $table->string('meta_title');
             $table->text('meta_description');
+
+            $table->string('item_prop_name');
             $table->text('item_prop_description');
+            $table->string('item_prop_image');
+
+            $table->string('og_type');
+            $table->string('og_title');
+            $table->string('og_image');
             $table->text('og_description');
+            $table->string('og_locale');
+            $table->string('og_url');
+
+            $table->string('canonical');
+            $table->string('robots');
+
             $table->timestamps();
         });
     }

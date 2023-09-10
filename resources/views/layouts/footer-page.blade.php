@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="{{ session('lang') }}">
 
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
@@ -33,8 +33,16 @@
         <div id="__layout">
             <div class="default-wrapper pc-wrap domain_y3h">
 
+
+                {{-- Header section Start --}}
+                @include('livewire.home.partials.header')
+                {{-- Header section End --}}
+
                 {{ $slot }}
 
+                {{-- Footer Section Start --}}
+                @include('livewire.home.partials.footer')
+                {{-- Footer Section End --}}
             </div>
         </div>
     </div>

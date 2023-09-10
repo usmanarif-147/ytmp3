@@ -37,6 +37,21 @@
         height: 100vh;
     }
 
+    /* h1 {
+        font-weight: 600;
+        font-size: 3.75rem;
+    }
+
+    h2 {
+        font-weight: 600;
+        font-size: 3rem;
+    }
+
+    h3 {
+        font-weight: 600;
+        font-size: 2.125rem;
+    } */
+
     :root {
         --loading-spinner-background: rgba(200, 200, 200, 0.20);
         --loading-spinner-body: blue;

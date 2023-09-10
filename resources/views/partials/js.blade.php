@@ -39,7 +39,9 @@
      integrity="sha512-eYSzo+20ajZMRsjxB6L7eyqo5kuXuS2+wEbbOkpaur+sA2shQameiJiWEzCIDwJqaB0a4a6tCuEvCOBHUg3Skg=="
      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
- {{-- <script>
+ <script src="{{ asset('helper.js') }}"></script>
+
+ <script>
      function changePassword() {
          $('#changePassword').modal('show');
      }
@@ -65,4 +67,100 @@
          });
 
      }
- </script> --}}
+ </script>
+
+ <script>
+     function changeEmail() {
+         $('#changeEmail').modal('show');
+     }
+
+     function saveEmail() {
+
+         $.ajax({
+             url: "{{ route('profile.change.email') }}",
+             type: "post",
+             data: {
+                 '_token': '{{ csrf_token() }}',
+                 'email': $('#email').val()
+             },
+             success: function(response) {
+                 console.log(response);
+                 $('#changeEmail').modal('hide');
+                 $('#email').val('')
+                 swal({
+                     title: 'Email Updated successfully',
+                     icon: 'success',
+                 });
+             },
+         });
+
+     }
+ </script>
+
+ <script>
+     function setYtmpLink() {
+         $.ajax({
+             url: "{{ route('get.ytm.link') }}",
+             type: "get",
+             success: function(response) {
+                 $('#ytm').val(response.link);
+                 $('#ytmp3').modal('show');
+             },
+         });
+     }
+
+     function saveYtmpLink() {
+
+         $.ajax({
+             url: "{{ route('set.ytm.link') }}",
+             type: "post",
+             data: {
+                 '_token': '{{ csrf_token() }}',
+                 'link': $('#ytm').val()
+             },
+             success: function(response) {
+                 console.log(response);
+                 $('#ytmp3').modal('hide');
+                 $('#ytm').val('')
+                 swal({
+                     title: 'YouTubeToMP3 Link Set Successfully',
+                     icon: 'success',
+                 });
+             },
+         });
+
+     }
+ </script>
+
+ <script>
+     function setYadLink() {
+         $.ajax({
+             url: "{{ route('get.yad.link') }}",
+             type: "get",
+             success: function(response) {
+                 $('#yadLink').val(response.link);
+                 $('#yad').modal('show');
+             },
+         });
+     }
+
+     function saveYadLink() {
+         $.ajax({
+             url: "{{ route('set.yad.link') }}",
+             type: "post",
+             data: {
+                 '_token': '{{ csrf_token() }}',
+                 'link': $('#yadLink').val()
+             },
+             success: function(response) {
+                 console.log(response);
+                 $('#yad').modal('hide');
+                 $('#yadLink').val('')
+                 swal({
+                     title: 'YouTube Audio Downloader Link set Successfully',
+                     icon: 'success',
+                 });
+             },
+         });
+     }
+ </script>

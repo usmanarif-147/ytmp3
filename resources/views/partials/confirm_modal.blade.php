@@ -15,9 +15,15 @@
                 <div class="modal-footer justify-content-center">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal"
                         wire:click="closeModal">Close</button>
-                    <button type="submit" class="btn {{ $modalActionBtnColor }}" style="color:white">
-                        {{ $modalActionBtnText }}
-                    </button>
+                    @if (isset($btnStatus) && $btnStatus)
+                        <button type="submit" class="btn {{ $modalActionBtnColor }}" style="color:white" disabled>
+                            {{ $modalActionBtnText }}
+                        </button>
+                    @else
+                        <button type="submit" class="btn {{ $modalActionBtnColor }}" style="color:white">
+                            {{ $modalActionBtnText }}
+                        </button>
+                    @endif
                 </div>
             </div>
         </div>

@@ -2,7 +2,7 @@
     <div>
         <div class="d-flex justify-content-between">
             <h2 class="card-header">
-                <a href="{{ url('admin/manage-languages') }}"> Languages </a> / {{ $heading }}
+                <a href="{{ route('languages') }}"> Languages </a> / {{ $heading }}
             </h2>
         </div>
     </div>
@@ -11,7 +11,6 @@
         <div class="col-xl">
             <div class="card mb-4">
                 <form wire:submit.prevent="update">
-
                     <div class="card-body">
                         <div class="row">
                             <div class="col-6">
@@ -101,6 +100,9 @@
             swal({
                 title: event.detail.message,
                 icon: event.detail.type,
+                allowOutsideClick: false,
+            }).then(() => {
+                location.href = "{{ route('languages') }}";
             });
         });
     </script>

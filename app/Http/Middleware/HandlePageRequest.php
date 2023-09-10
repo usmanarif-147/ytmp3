@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Language;
 use App\Models\Page;
 use Closure;
 use Illuminate\Http\Request;
@@ -17,18 +18,20 @@ class HandlePageRequest
      */
     public function handle(Request $request, Closure $next)
     {
-        $slug = Page::where('make_default', 1)->first()->slug;
+        $page = Page::where('default', 1)->first();
+        $slug = $page->slug;
+        session()->put('lang', Language::where('id', $page->lang_id)->first()->lang);
         if (!request()->segment(1)) {
-            return redirect('/' . $slug);
+            return redirect('/' . $slug, 301);
         }
-        if (request()->segment(1) == 'terms-of-use') {
-            return redirect('terms-of-use');
-        }
+
+
         $page = Page::where('slug', request()->segment(1))
             ->where('status', 1)
             ->first();
+        session()->put('lang', Language::where('id', $page->lang_id)->first()->lang);
         if (!$page) {
-            return redirect('/' . $slug);
+            return redirect('/' . $slug, 301);
         }
 
         return $next($request);

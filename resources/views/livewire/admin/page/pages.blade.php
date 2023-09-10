@@ -8,18 +8,6 @@
                 </span>
             </h2>
             <h5 class="card-header">
-                @if ($page_static_meta)
-                    <a class="btn btn-primary" href="{{ route('edit.static.page.meta') }}">
-                        {{-- <a class="btn btn-primary" href="{{ route('add.static.page.meta') }}"> --}}
-                        <i class='bx bx-pencil'></i>
-                        Edit Static Meta Details
-                    </a>
-                @else
-                    <a class="btn btn-primary" href="{{ route('add.static.page.meta') }}">
-                        <i class='bx bx-plus'></i>
-                        Add Static Meta Details
-                    </a>
-                @endif
                 <a class="btn btn-primary" href="{{ route('create.page') }}"> Create Page
                 </a>
             </h5>
@@ -29,16 +17,7 @@
     <div class="card">
         <div class="card-header">
             <div class="row">
-                <div class="col-md-3 offset-md-6">
-                    <label for=""> Select status </label>
-                    <select wire:model="filterByStatus" class="form-control form-select me-2">
-                        <option value="" selected> Select Status </option>
-                        @foreach ($statuses as $val => $status)
-                            <option value="{{ $val }}">{{ $status }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="col-md-3">
+                <div class="col-md-3 offset-md-9">
                     <label for=""> Search by Name </label>
                     <input class="form-control me-2" type="search" wire:model.debounce.500ms="searchQuery"
                         placeholder="Search" aria-label="Search">
@@ -54,8 +33,9 @@
                                 <th> Title </th>
                                 <th> Slug </th>
                                 <th> Language </th>
-                                {{-- <th> Status </th> --}}
-                                <th> Actions </th>
+                                <th> Default </th>
+                                <th> Status </th>
+                                <th> </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -64,6 +44,18 @@
                                     <td> {{ $page->page_title }}</td>
                                     <td> {{ $page->slug }}</td>
                                     <td> {{ $page->page_language }}</td>
+                                    <td>
+                                        @if ($page->default)
+                                            <button class="btn btn-success" disabled>
+                                                Default Page
+                                            </button>
+                                        @else
+                                            <button class="btn btn-warning"
+                                                wire:click="makeDefaultConfirmModal({{ $page->id }})">
+                                                Make Page Default
+                                            </button>
+                                        @endif
+                                    </td>
                                     <td>
                                         <span
                                             class="badge {{ $page->status ? 'bg-label-success' : 'bg-label-danger' }} me-1">
@@ -129,19 +121,12 @@
                                                         </a>
                                                     </li>
                                                     <li>
-                                                        @if ($page->status)
+                                                        @if (App\Models\Page::count() > 1)
                                                             <a href="javascript:void(0)"
                                                                 class="dropdown-item fw-bold text-danger"
-                                                                wire:click="deactivateConfirmModal({{ $page->id }})">
-                                                                <i class="fa fa-eye-slash"></i>
-                                                                Deativate
-                                                            </a>
-                                                        @else
-                                                            <a href="javascript:void(0)"
-                                                                class="dropdown-item fw-bold text-success"
-                                                                wire:click="activateConfirmModal({{ $page->id }})">
-                                                                <i class="fa fa-eye"></i>
-                                                                Activate
+                                                                wire:click="deleteConfirmModal({{ $page->id }})">
+                                                                <i class="fa fa-trash"></i>
+                                                                Delete
                                                             </a>
                                                         @endif
                                                     </li>

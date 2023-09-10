@@ -9,7 +9,7 @@
                             We're so excited to see you again
                         </p>
                         <p>
-                            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                            <x-input-error :messages="$errors->get('email')" class="text-white mt-2" />
                         </p>
                         <form method="POST" action="{{ route('admin.login') }}">
                             @csrf

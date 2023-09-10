@@ -1,11 +1,11 @@
 <div class="section-download" data-v-8fbc4ecc>
     <div class="container" data-v-8fbc4ecc>
-        <h2 class="section-download-title" data-v-8fbc4ecc>
+        <h1 class="section-download-title" data-v-8fbc4ecc>
             <span data-v-8fbc4ecc>
                 {{ $page_content['page_title'] }}
                 <i class="icon_music" data-v-8fbc4ecc></i>
                 <i class="icon_play" data-v-8fbc4ecc></i></span>
-        </h2>
+        </h1>
         <span class="section-download-desc" data-v-8fbc4ecc>The best YouTube to MP3/MP4 Converter &
             Downloader</span>
         <div class="download-box section-download-container" data-v-309d914c data-v-8fbc4ecc>

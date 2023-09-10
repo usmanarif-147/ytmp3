@@ -12,8 +12,18 @@ class PageDynamicMeta extends Model
     protected $fillable = [
         'lang_id',
         'page_id',
+        'meta_title',
         'meta_description',
+        'item_prop_name',
+        'item_prop_image',
         'item_prop_description',
-        'og_description'
+        'og_type',
+        'og_title',
+        'og_image',
+        'og_description',
+        'og_locale',
+        'og_url',
+        'canonical',
+        'robots'
     ];
 }

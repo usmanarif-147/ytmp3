@@ -13,16 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('page_static_metas', function (Blueprint $table) {
+        Schema::create('privacy_policies', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('lang_id')->constrained('languages');
             $table->string('title');
-            $table->string('robots');
-            $table->string('item_prop_name');
-            $table->string('item_prop_image');
-            $table->string('canonical');
-            $table->string('og_type');
-            $table->string('og_title');
-            $table->string('og_image');
+            $table->longText('description');
             $table->timestamps();
         });
     }
@@ -34,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('page_static_metas');
+        Schema::dropIfExists('privacy_policies');
     }
 };

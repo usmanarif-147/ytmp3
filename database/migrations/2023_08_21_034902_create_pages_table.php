@@ -18,8 +18,8 @@ return new class extends Migration
             $table->foreignId('lang_id')->constrained('languages');
             $table->string('page_title');
             $table->string('slug');
-            $table->string('footer')->nullable();
-            $table->tinyInteger('make_default')->default(0);
+            $table->string('redirect_to')->default('301');
+            $table->tinyInteger('default')->default(0);
             $table->tinyInteger('status')->default(0);
             $table->timestamps();
         });

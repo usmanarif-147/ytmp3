@@ -15,7 +15,6 @@
                                 <span>
                                     <img src="/assets/us-flag.gif" style="height: 13px; width: 20px" alt="" />
                                     {{ $page_content['lang_name'] }}
-                                    {{-- {{ $page_content['page_slug'] }} --}}
                                 </span>
                                 <span></span>
                             </span>

@@ -13,6 +13,7 @@ class Page extends Model
         'lang_id',
         'page_title',
         'slug',
-        'status'
+        'status',
+        'default',
     ];
 }

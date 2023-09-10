@@ -53,6 +53,10 @@ class CreatePage extends Component
             'is_content_uploaded' => 1
         ]);
 
+        if (Page::count() < 1) {
+            $data['default'] = 1;
+        }
+
         Page::create($data);
 
         $this->dispatchBrowserEvent('swal:modal', [

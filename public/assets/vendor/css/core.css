@@ -533,13 +533,13 @@ progress {
   }
 }
 
-.display-6 {
+.  {
   font-size: calc(1.275rem + 0.3vw);
   font-weight: 500;
   line-height: 1.1;
 }
 @media (min-width: 1200px) {
-  .display-6 {
+  .  {
     font-size: 1.5rem;
   }
 }
@@ -3154,7 +3154,7 @@ textarea.form-control-lg {
   padding: 15px;
   min-width: auto;
   z-index: 999;
- 
+
 }
 .admin-table td{
 font-size: 12px;
@@ -3164,7 +3164,7 @@ font-size: 12px;
   background: #24292F !important;
   color: #fff;
   padding: 5px;
- 
+
 }
 
 .admin-dashboard .bx{
